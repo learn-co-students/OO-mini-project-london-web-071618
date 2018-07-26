@@ -18,7 +18,7 @@ class Recipe
   end
 
   def ingredients
-    found_data = RecipeIngredient.all.find {|x| x.recipe = self}
+    found_data = RecipeIngredient.all.select {|x| x.recipe == self}
     found_data.map {|x| x.ingredient}
   end
 
@@ -26,7 +26,9 @@ class Recipe
     RecipeCard.all.max_by {|obj| obj.recipe.name}.recipe
   end
 
-  def users #adham
+  def users #adham Done
+    find_user = RecipeCard.all.select {|r| r.recipe == self }
+    find_user.map {|x| x.user}.uniq
   end
 
   def allergens #ritz
