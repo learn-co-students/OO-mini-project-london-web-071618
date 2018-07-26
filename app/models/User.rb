@@ -1,5 +1,6 @@
 class User
   @@all = []
+  attr_accessor :name
 
   def initialize(name)
     @name = name
@@ -37,7 +38,7 @@ class User
   end
 
   def safe_recipes #ritz
+    Recipe.all.select {|recipe| (recipe.ingredients & self.allergens).empty?}
   end
-
 
 end

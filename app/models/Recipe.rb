@@ -18,7 +18,7 @@ class Recipe
   end
 
   def ingredients
-    found_data = RecipeIngredient.all.find {|x| x.recipe = self}
+    found_data = RecipeIngredient.all.select {|x| x.recipe == self}
     found_data.map {|x| x.ingredient}
   end
 
@@ -30,6 +30,8 @@ class Recipe
   end
 
   def allergens #ritz
+    find_ingredients = self.ingredients
+    find_allergens = Allergen.all.map {|obj| obj.ingredient}
+    find_allergens & find_ingredients
   end
-
 end
