@@ -1,11 +1,11 @@
 class RecipeIngredient
-  attr_accessor :recipe, :ingredients
+  attr_accessor :recipe, :ingredient
 
   @@all = []
 
-  def initialize(recipe)
+  def initialize(recipe, ingredient)
     @recipe = recipe
-    @ingredients = []
+    @ingredient = ingredient
     @@all << self
   end
 
@@ -13,3 +13,12 @@ class RecipeIngredient
     @@all
   end
 end
+
+
+# counts = Hash.new
+# RecipeCard.all.each do |recipecard|
+#   counts[recipecard.recipe] = 0
+# end
+# RecipeCard.all.each do |recipecard|
+#   counts[recipecard.recipe] += 1
+# end

@@ -12,4 +12,7 @@ class Ingredient
     @@all
   end
 
+  def self.most_common_allergen #adham
+  end
+
 end
