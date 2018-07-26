@@ -12,14 +12,24 @@ class Recipe
   end
 
   def add_ingredients(arr_of_ingredients)
-    new_rec = RecipeIngredient.new(self)
     arr_of_ingredients.each do |x|
-      new_rec.ingredients << x
+      RecipeIngredient.new(self, x)
     end
   end
 
   def ingredients
     found_data = RecipeIngredient.all.find {|x| x.recipe = self}
-    return found_data.ingredients
+    found_data.map {|x| x.ingredient}
   end
+
+  def self.recipe_most_popular
+    RecipeCard.all.max_by {|obj| obj.recipe.name}.recipe
+  end
+
+  def users #adham
+  end
+
+  def allergens #ritz
+  end
+
 end
