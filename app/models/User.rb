@@ -34,9 +34,21 @@ class User
     grouped_by_recipe = cards.group_by{|recipe_card| recipe_card.recipe}
     sorted = grouped_by_recipe.sort_by {|recipe, card| card[0].rating}.reverse
     top_three = []
-    (1..3).to_a.each do |i|
-      top_three << sorted[i][0]
+    (0..2).to_a.each do |i|
+      if sorted[i]
+        top_three << sorted[i][0]
+      end
+
     end
+    # if sorted[0]
+    #   top_three << sorted[0][0]
+    # end
+    # if sorted[1]
+    #   top_three << sorted[1][0]
+    # end
+    # if sorted[2]
+    #   top_three << sorted[2][0]
+    # end
     top_three
   end
 

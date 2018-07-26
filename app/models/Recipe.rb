@@ -29,11 +29,14 @@ class Recipe
   end
 
 
-  # def allergens
-  #   ingredients.select do |ingredient|
-  #     Allergen.all.ingredient.include?(ingredient)
-  #   end
-  # end
+  def allergens
+    all_allergens = Allergen.all.map  {|allergen| allergen.ingredient}
+    self.ingredients.select do |ingredient|
+      if all_allergens.include?(ingredient)
+        ingredient
+      end
+    end
+  end
 
   def add_ingredients(ingredients)
     ingredients.each do |ingredient|
