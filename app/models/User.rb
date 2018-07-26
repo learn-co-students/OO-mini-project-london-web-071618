@@ -68,15 +68,19 @@ class User
 
     users_allergens = Allergen.all.select{|allergen| allergen.user == self }
 
-    array2= []
+    array_of_safe= []
+    array_of_not_safe = []
     array_all_users_ingredients.each do |recipeingredient|
       users_allergens.each do |allergen|
         if allergen.ingredient != recipeingredient.ingredient
-            array2 << recipeingredient.recipe
+            array_of_safe << recipeingredient.recipe
+        elsif allergen.ingredient == recipeingredient.ingredient
+            array_of_not_safe << recipeingredient.recipe
         end
       end
     end
-    array2
+    final_safe_recipes = array_of_safe - array_of_not_safe
+    final_safe_recipes
   end
 
 end
