@@ -32,6 +32,8 @@ class Recipe
   end
 
   def allergens #ritz
+    find_ingredients = self.ingredients
+    find_allergens = Allergen.all.map {|obj| obj.ingredient}
+    find_allergens & find_ingredients
   end
-
 end
